@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DrunkAssistant.iml" filepath="$PROJECT_DIR$/DrunkAssistant.iml" />
+      <module fileurl="file://C:\Users\Nex\Desktop\DrunkAssistant\DrunkAssistant.iml" filepath="C:\Users\Nex\Desktop\DrunkAssistant\DrunkAssistant.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Nex\Desktop\DrunkAssistant\app\app.iml" filepath="C:\Users\Nex\Desktop\DrunkAssistant\app\app.iml" />
     </modules>
   </component>
 </project>

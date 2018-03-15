@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DrunkAssistant</string>
+    <string name="title_activity_bar_maps">Map</string>
 </resources>
