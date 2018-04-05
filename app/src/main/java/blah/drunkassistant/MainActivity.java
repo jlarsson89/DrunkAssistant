@@ -1,5 +1,7 @@
 package blah.drunkassistant;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +19,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Intent intent = new Intent(this, BarMaps.class);
         //startActivity(intent);
+
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle("Warning!");
+        alertDialog.setMessage("Please drink responsibly. \n https://www.drinkaware.co.uk/");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+
         List<String> choises = new ArrayList<String>();
         choises.add("Pub");
         choises.add("Night Club");
