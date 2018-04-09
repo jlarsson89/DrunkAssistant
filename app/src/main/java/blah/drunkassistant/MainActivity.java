@@ -2,8 +2,9 @@ package blah.drunkassistant;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+//import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.SensorEventListener;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     // A default location (Sydney, Australia) and default zoom to use when location permission is
     // not granted.
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
-    private static final int DEFAULT_ZOOM = 15;
+    private static final float DEFAULT_ZOOM = 10.0f;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
 
