@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -39,7 +41,7 @@ import com.google.android.gms.tasks.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private GoogleMap mMap;
@@ -81,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private float last_x, last_y, last_z;
     private static final int SHAKE_THRESHOLD = 600;
 
+    // JSON string stuff
+    private String barChoice;
+    private String url = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Drop down menu
         List<String> choices = new ArrayList<String>();
+        choices.add("");
         choices.add("Pub");
         choices.add("Night Club");
         choices.add("Bar");
@@ -109,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, choices);
         dataAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         barSelection.setAdapter(dataAdapter);
+        barSelection.setOnItemSelectedListener(this);
 
         // Map
 
@@ -251,5 +259,34 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
     }
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+        if (parent.getSelectedItem().equals("Pub")) {
+            barChoice = "Pub";
+            url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + mLastKnownLocation.getLatitude() +
+                  "," + mLastKnownLocation.getLongitude() +"&radius=5000&type="+barChoice+"&key=AIzaSyBZ11gs07ZG-RBemM6brZ7MhI1jxYklSNc";
+            Log.d("pub", url);
+        }
+        if (parent.getSelectedItem().equals("Bar")){
+            barChoice = "Bar";
+            url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + mLastKnownLocation.getLatitude() +
+                    "," + mLastKnownLocation.getLongitude() +"&radius=5000&type="+barChoice+"&key=AIzaSyBZ11gs07ZG-RBemM6brZ7MhI1jxYklSNc";
+            Log.d("bar", url);
+        }
+        if (parent.getSelectedItem().equals("Night Club")){
+            barChoice = "Night Club";
+            url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + mLastKnownLocation.getLatitude() +
+                    "," + mLastKnownLocation.getLongitude() +"&radius=5000&type="+barChoice+"&key=AIzaSyBZ11gs07ZG-RBemM6brZ7MhI1jxYklSNc";
+            Log.d("club", url);
+        }
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+    }
+
 
 }
