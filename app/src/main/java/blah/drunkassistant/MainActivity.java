@@ -268,25 +268,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             barChoice = "Pub";
             url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + mLastKnownLocation.getLatitude() +
                   "," + mLastKnownLocation.getLongitude() +"&radius=5000&type="+barChoice+"&key=AIzaSyBZ11gs07ZG-RBemM6brZ7MhI1jxYklSNc";
-            Log.d("pub", url);
+            Log.i("pub", url);
         }
         if (parent.getSelectedItem().equals("Bar")){
             barChoice = "Bar";
             url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + mLastKnownLocation.getLatitude() +
                     "," + mLastKnownLocation.getLongitude() +"&radius=5000&type="+barChoice+"&key=AIzaSyBZ11gs07ZG-RBemM6brZ7MhI1jxYklSNc";
-            Log.d("bar", url);
+            Log.i("bar", url);
         }
         if (parent.getSelectedItem().equals("Night Club")){
             barChoice = "Night Club";
             url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + mLastKnownLocation.getLatitude() +
-                    "," + mLastKnownLocation.getLongitude() +"&radius=5000&type="+barChoice+"&key=AIzaSyBZ11gs07ZG-RBemM6brZ7MhI1jxYklSNc";
-            Log.d("club", url);
+                    "," + mLastKnownLocation.getLongitude() +"&radius=5000&type=nightclub&key=AIzaSyBZ11gs07ZG-RBemM6brZ7MhI1jxYklSNc";
+            Log.i("club", url);
         }
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
-
-
 }
